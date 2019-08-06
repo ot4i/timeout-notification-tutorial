@@ -75,7 +75,7 @@
                         "section": "The tutorial requires an ACE integration node owned server, or a standalone server."
                     },
                     {
-                        "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. There are no other pre-requisites needed by the scenario."
+                        "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. This scenario uses the Timeout Notification node which requires your integration node or server to be associated with a local queue manager, so an MQ installation is required. There are no other pre-requisites needed by the scenario."
                     }
                 ]
             },
@@ -148,29 +148,56 @@
                 "overview": 
 				{
                     "name": "Prepare",
-                    "heading": "Prepare a trace directory, create an integration node and deploy the message flow",
+                    "heading": "Prepare a trace directory, create a queue manager and integration node, and then deploy the message flow",
                     "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
                     "sections": 
 		     [
-			  {
-              "section":"Prepare the scenario by executing the following steps:",				
-                "steps":
-                {
-                "type":"ordered",
-                "details":
-                  [                    
-					{
-                    "details":"The message flow's Trace node will attempt to write a trace file to the directory <code><span class='cmdname'>C:\\temp</span></code>. Create this directory if it does not already exist, or edit the Trace node in the message flow to use a different directory suitable for your runtime environment."
-                    },
-					{ 
-                      "details":"Next, create an integration node by starting an App Connect Enterprise command console and executing the following commands:<br><code><span class='cmdname'>mqsicreatebroker TESTNODE</span></code><br><code><span class='cmdname'>mqsistart TESTNODE</span></code><br><code><span class='cmdname'>mqsicreateexecutiongroup TESTNODE -e server</span></code>"
-                    },					
-					{ 
-                      "details":"Back in the Toolkit, drag and drop deploy the provided BAR file named <span class='application'>TimeoutNotification.bar</span> which you will find inside the <span class='application'>ExampleTimeoutNotification</span> application."
-                    }
-                  ]
-                }
-              }
+			 {
+                     "section":"The Trace node uses a trace directory and the Timeout Notification node requires MQ queues to operate, so execute the following steps to prepare your environment accordingly:",
+                     "steps":{
+                        "type":"ordered",
+                        "details":[
+                           	{
+                    			"details":"The message flow's Trace node will attempt to write a trace file to the directory <code><span class='cmdname'>C:\\temp</span></code>. Create this directory if it does not already exist, or edit the Trace node in the message flow to use a different directory suitable for your runtime environment."
+                    		},
+						   	{
+                              "details":"Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class='cmdname'>crtmqm</span> <span class='varname'> qmgr</span></code><br><code><span class='cmdname'>strmqm</span> <span class='varname'> qmgr</span></code>"
+                                    },
+                                    {
+                                       "details":"Next create the queues by typing the following command:<br><code>server\\sample\\wmq\\iib_createqueues <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
+                                    }									
+                                 ]
+                              }
+                           },                           
+                           {
+                              "details":"Create an integration node which is associated with the above queue manager by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"In the console window, create an integration node by typing the following command:<br><code><span class='cmdname'>mqsicreatebroker</span> <span class='varname'>TESTNODE</span> -q <span class='varname'>qmgr</span></code>"
+                                    },
+									{
+                                       "details":"Start the integration node by typing the following command:<br><code><span class='cmdname'>mqsistart</span> <span class='varname'>TESTNODE</span></code>"
+                                    },
+                                    {
+                                       "details":"Create an integration server associated with the integration node by typing the following command:<br><code><span class='cmdname'>mqsicreateexecutiongroup</span> <span class='varname'>TESTNODE</span> -e <span class='varname'>default</span></code>"
+                                    }
+
+                                 ]
+                              }
+                           },
+						   {
+						   		"details":"Back in the Toolkit, drag and drop deploy the provided BAR file named <span class='application'>TimeoutNotification.bar</span> which you will find inside the <span class='application'>ExampleTimeoutNotification</span> application."
+                    		}							
+                        ]
+                     }
+                  }
              ]
                 },
                 "helpLinks": 
