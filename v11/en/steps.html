@@ -123,10 +123,10 @@
 					<div class="small-12 medium-12 large-12 columns">
 					
 						<div class="row content-details">
-						  	<h4>Prepare a trace directory, create an integration node and deploy the message flow</h4>
+						  	<h4>Prepare a trace directory, create a queue manager and integration node, and then deploy the message flow</h4>
 						    
 						    
-								<p> Prepare the scenario by executing the following steps: </p>
+								<p> The Trace node uses a trace directory and the Timeout Notification node requires MQ queues to operate, so execute the following steps to prepare your environment accordingly: </p>
 								
 								
 									
@@ -137,7 +137,39 @@
 										
 										</li>
 									
-										<li> Next, create an integration node by starting an App Connect Enterprise command console and executing the following commands:<br><code><span class="cmdname">mqsicreatebroker TESTNODE</span></code><br><code><span class="cmdname">mqsistart TESTNODE</span></code><br><code><span class="cmdname">mqsicreateexecutiongroup TESTNODE -e server</span></code>
+										<li> Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class="cmdname">crtmqm</span> <span class="varname"> qmgr</span></code><br><code><span class="cmdname">strmqm</span> <span class="varname"> qmgr</span></code></li>
+												
+													<li> Next create the queues by typing the following command:<br><code>server\sample\wmq\iib_createqueues <span class="varname">qmgr</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name.</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Create an integration node which is associated with the above queue manager by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> In the console window, create an integration node by typing the following command:<br><code><span class="cmdname">mqsicreatebroker</span> <span class="varname">TESTNODE</span> -q <span class="varname">qmgr</span></code></li>
+												
+													<li> Start the integration node by typing the following command:<br><code><span class="cmdname">mqsistart</span> <span class="varname">TESTNODE</span></code></li>
+												
+													<li> Create an integration server associated with the integration node by typing the following command:<br><code><span class="cmdname">mqsicreateexecutiongroup</span> <span class="varname">TESTNODE</span> -e <span class="varname">default</span></code></li>
+												
+											
+											</ol>
+											
 										
 										</li>
 									
