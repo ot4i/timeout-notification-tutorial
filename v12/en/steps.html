@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM App Connect Enterprise V11 Tutorial" /> 
+		
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
+
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">Using a Timeout Notification node to automatically start a flow <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.ace.home.doc/help_home.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to use the Timeout Notification node to automatically start a flow after a regular configurable time interval. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, two projects will be created in your workspace: An application named <span class="application">ExampleTimeoutNotification</span> and a policy project named <span class="application">myPols</span>. </p>
+								
+							
+								<p> <span class="application">ExampleTimeoutNotification</span> provides a single message flow named <span class="resource">TimeoutNotification</span>. The flow is started using a Timeout Notification node which is configured to fire a flow propagation on an automatic regular basis every 20 seconds. The second node in the flow is a trace node which appends text to a trace file which records the time when the trace node was reached, the interval for flow propagation and the message count. </p>
+								
+							
+								<p> <span class="application">myPols</span> is a policy project holding a single policy named <span class="resource">T1</span>. The policy won't be used to start with, but is provided ready for the extension to the basic scenario which is described on the Run tab. </p>
+								
+							
+								<p> Once imported using the link on the right, the application <span class="application">ExampleTimeoutNotification</span> is ready to be deployed and tested. To deploy, you can use a provided BAR file, as described on the Prepare tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to  Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+									
+							
+							</ul>
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Prepare a trace directory, create a queue manager and integration node, and then deploy the message flow</h4>
+						    
+						    
+								<p> The Trace node uses a trace directory and the Timeout Notification node requires MQ queues to operate, so execute the following steps to prepare your environment accordingly: </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> The message flow's Trace node will attempt to write a trace file to the directory <code><span class="cmdname">C:\temp</span></code>. Create this directory if it does not already exist, or edit the Trace node in the message flow to use a different directory suitable for your runtime environment.
+										
+										</li>
+									
+										<li> Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class="cmdname">crtmqm</span> <span class="varname"> qmgr</span></code><br><code><span class="cmdname">strmqm</span> <span class="varname"> qmgr</span></code></li>
+												
+													<li> Next create the queues by typing the following command:<br><code>server\sample\wmq\iib_createqueues <span class="varname">qmgr</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name.</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Create an integration node which is associated with the above queue manager by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> In the console window, create an integration node by typing the following command:<br><code><span class="cmdname">mqsicreatebroker</span> <span class="varname">TESTNODE</span> -q <span class="varname">qmgr</span></code></li>
+												
+													<li> Start the integration node by typing the following command:<br><code><span class="cmdname">mqsistart</span> <span class="varname">TESTNODE</span></code></li>
+												
+													<li> Create an integration server associated with the integration node by typing the following command:<br><code><span class="cmdname">mqsicreateexecutiongroup</span> <span class="varname">TESTNODE</span> -e <span class="varname">default</span></code></li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Back in the Toolkit, drag and drop deploy the provided BAR file named <span class="application">TimeoutNotification.bar</span> which you will find inside the <span class="application">ExampleTimeoutNotification</span> application.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4></h4>
+							<ul>
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+					<div class="small-12 medium-12 large-12 columns">
+					
+				    	<div class="row content-details">
+					      	<h4></h4>
+					        
+						    
+								<p> <h4>Use the Flow Exerciser to test the tutorial scenario </h4></p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Open <span class="resource">TimeoutNotification.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow (when challenged you do not need to redeploy the flow again).</li>
+												
+													<li> This flow does not need you to send it a message to drive it. Simply wait for about 20 seconds for a flow propagation to occur. If you are impatient, you can check the trace directory which was configured on the Prepare tab for the presence of the trace file named <code><span class="cmdname">TraceTimeoutNotification.txt</span></code>. Once the flow has fired, the trace node should contain an entry that looks like this:<br><code>The flow propagation is from the Timeout Notification node with count number 1</code><br><code>The flow propagation has reached the Trace node at 2019-08-04 20:18:56.974640</code><br><code>The flow was started by Timeout Notification node with the identifier 'ID1'</code><br><code>The flow Timeout Notification node currently has its interval set to 20 seconds</code><br></li>
+												
+													<li> After you close the dialog, the path taken through the messageflow is highlighted. Using a text editor, open the trace file <span class="resource">C:\temp\TraceTimeoutNotification.txt</span>.</li>
+												
+													<li> Next, reconfigure the TimeoutNotification node. Change the <span class="resource">Unique Identifier</span> property to the value <span class="resource">{myPols}:T1</span>. This means that the TimeoutNotification node will take its interval from the policy named <span class="resource">T1</span> which resides in the policy project named <span class="resource">myPols</span>. Drag and drop deploy the policy project named <span class="resource">myPols</span>, and then drag and drop deploy the application <span class="application">ExampleTimeoutNotification</span> (or do both these actions together by reconfiguring the <span class="application">TimeoutNotification.bar</span> which you used earlier). The policy has been set up with the shorter interval of 5 seconds. You can experiment with different intervals by simply redeploying the policy project after updating the value of its property named <span class="resource">Timeout (seconds)</span>.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> This tutorial has shown the Timeout Notification node automatically start a flow on a regular timed interval. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/ac20802_.htm')" title="Knowledge Center link to  Timeout Notification node">Timeout Notification node</a> </li>
+									
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to  Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+									
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
