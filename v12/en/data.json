@@ -75,7 +75,7 @@
                         "section": "The tutorial requires an integration node owned server, or a standalone server."
                     },
                     {
-                        "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. This scenario uses the Timeout Notification node which requires your integration node or server to be associated with a local queue manager, so an MQ installation is required. There are no other pre-requisites needed by the scenario."
+                        "section": "<span class='application'>IMPORTANT NOTE:</span> In this tutorial the TimeoutNotification node uses the <span class='application'>Automatic/span> operation mode, so it does not require a queue manager. If you were to extend this scenario to use a TimeoutNotification node which uses the <span class='application'>Controlled</span> operation mode, then a queue manager would be required. In this situation, information about the state of in-flight messages would be held on storage queues that are controlled by IBM MQ. If you were using timeout flows on an independent integration server, and your TimeoutNotification node uses the <span class='application'>Controlled</span> operation mode, then you can choose to use either a local default queue manager or a remote default queue manager. Interactions between an independent integration server and IBM MQ can use a client connection to a remote default queue manager. If you were using timeout flows on a node owned integration server, and your TimeoutNotification node uses the <span class='application'>Controlled</span> operation mode, then this means that you must install IBM MQ on the same computer as your integration node and use a local queue manager."						
                     }
                 ]
             },
@@ -149,12 +149,12 @@
                 "overview": 
 				{
                     "name": "Prepare",
-                    "heading": "Prepare a trace directory, create a queue manager and integration node, and then deploy the message flow",
+                    "heading": "Prepare a trace directory, optionally create a queue manager and integration node, and then deploy the message flow",
                     "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
                     "sections": 
 		     [
 			 {
-                     "section":"The Trace node uses a trace directory and the Timeout Notification node requires MQ queues to operate, so execute the following steps to prepare your environment accordingly:",
+                     "section":"The Trace node uses a trace directory so execute the following steps to prepare your environment accordingly. The OPTIONAL steps below can be ignored if you are not planning to extend the core tutorial to investigate other operation modes of the Timeout Notification node (which require MQ queues to operate):",
                      "steps":{
                         "type":"ordered",
                         "details":[
@@ -162,7 +162,7 @@
                     			"details":"The message flow's Trace node will attempt to write a trace file to the directory <code><span class='cmdname'>C:\\temp</span></code>. Create this directory if it does not already exist, or edit the Trace node in the message flow to use a different directory suitable for your runtime environment."
                     		},
 						   	{
-                              "details":"Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
+                              "details":"OPTIONAL. If you planning to extend the core tutorial and investigate the <span class='application'>Controlled</span> operation mode of the Timeout Notification node, then you will need a queue manager. Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
                               "substeps":{
                                  "type":"ordered",
                                  "details":[
@@ -176,7 +176,7 @@
                               }
                            },                           
                            {
-                              "details":"Create an integration node which is associated with the above queue manager by completing the following steps:",
+                              "details":"OPTIONAL. If you are planning to extend the core tutorial and investigate the <span class='application'>Controlled</span> operation mode of the Timeout Notification node then create an integration node which is associated with the queue manager you created in the above OPTIONAL step by completing the following instructions:",
                               "substeps":{
                                  "type":"ordered",
                                  "details":[
@@ -193,8 +193,11 @@
                                  ]
                               }
                            },
+						    {
+						   		"details":"If you did not execute the OPTIONAL steps above, then from within the Toolkit, create a local integration server (without any relationship to MQ) for testing the flow. From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='application'>Create a local integration server</span>. Leave all the options with their default values and click Finish. The local Integration Server will be started, using a project in your Toolkit's workspace as the work directory. Click OK to dismiss the Success dialog."
+                    		},
 						   {
-						   		"details":"Back in the Toolkit, drag and drop deploy the provided BAR file named <span class='application'>TimeoutNotification.bar</span> which you will find inside the <span class='application'>ExampleTimeoutNotification</span> application."
+						   		"details":"Regardless of whether you are using a local integration server, or an integration node, now drag and drop deploy the provided BAR file named <span class='application'>TimeoutNotification.bar</span> which you will find inside the <span class='application'>ExampleTimeoutNotification</span> application."
                     		}							
                         ]
                      }
