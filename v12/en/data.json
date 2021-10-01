@@ -75,7 +75,7 @@
                         "section": "The tutorial requires an integration node owned server, or a standalone server."
                     },
                     {
-                        "section": "<span class='application'>IMPORTANT NOTE:</span> In this tutorial the TimeoutNotification node uses the <span class='application'>Automatic/span> operation mode, so it does not require a queue manager. If you were to extend this scenario to use a TimeoutNotification node which uses the <span class='application'>Controlled</span> operation mode, then a queue manager would be required. In this situation, information about the state of in-flight messages would be held on storage queues that are controlled by IBM MQ. If you were using timeout flows on an independent integration server, and your TimeoutNotification node uses the <span class='application'>Controlled</span> operation mode, then you can choose to use either a local default queue manager or a remote default queue manager. Interactions between an independent integration server and IBM MQ can use a client connection to a remote default queue manager. If you were using timeout flows on a node owned integration server, and your TimeoutNotification node uses the <span class='application'>Controlled</span> operation mode, then this means that you must install IBM MQ on the same computer as your integration node and use a local queue manager."						
+                        "section": "IMPORTANT NOTE: In this tutorial the TimeoutNotification node uses the Automatic operation mode, so it does not require a queue manager. If you were to extend this scenario to use a TimeoutNotification node which uses the Controlled operation mode, then a queue manager would be required. In this situation, information about the state of in-flight messages would be held on storage queues that are controlled by IBM MQ. If you were using timeout flows on an independent integration server, and your TimeoutNotification node uses the Controlled operation mode, then you can choose to use either a local default queue manager or a remote default queue manager. Interactions between an independent integration server and IBM MQ can use a client connection to a remote default queue manager. If you were using timeout flows on a node owned integration server, and your TimeoutNotification node uses the Controlled operation mode, then this means that you must install IBM MQ on the same computer as your integration node and use a local queue manager."						
                     }
                 ]
             },
@@ -162,7 +162,7 @@
                     			"details":"The message flow's Trace node will attempt to write a trace file to the directory <code><span class='cmdname'>C:\\temp</span></code>. Create this directory if it does not already exist, or edit the Trace node in the message flow to use a different directory suitable for your runtime environment."
                     		},
 						   	{
-                              "details":"OPTIONAL. If you planning to extend the core tutorial and investigate the <span class='application'>Controlled</span> operation mode of the Timeout Notification node, then you will need a queue manager. Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
+                              "details":"<span class='application'>OPTIONAL</span> If you planning to extend the core tutorial and investigate the <span class='application'>Controlled</span> operation mode of the Timeout Notification node, then you will need a queue manager. Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
                               "substeps":{
                                  "type":"ordered",
                                  "details":[
@@ -176,7 +176,7 @@
                               }
                            },                           
                            {
-                              "details":"OPTIONAL. If you are planning to extend the core tutorial and investigate the <span class='application'>Controlled</span> operation mode of the Timeout Notification node then create an integration node which is associated with the queue manager you created in the above OPTIONAL step by completing the following instructions:",
+                              "details":"<span class='application'>OPTIONAL</span> If you are planning to extend the core tutorial and investigate the <span class='application'>Controlled</span> operation mode of the Timeout Notification node then create an integration node which is associated with the queue manager you created in the above OPTIONAL step by completing the following instructions:",
                               "substeps":{
                                  "type":"ordered",
                                  "details":[
